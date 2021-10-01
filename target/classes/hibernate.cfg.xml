@@ -9,8 +9,9 @@
 		<property name="connection.user">root</property>
 		<property name="connection.password">3287</property>
 		<property name="dialect">org.hibernate.dialect.MySQL8Dialect</property>
-		<property name="hbm2ddl.auto">update</property>
+		<property name="hbm2ddl.auto">create</property>
 		<property name="show_sql">true</property>
 		<mapping class="com.hibernate.HibernateWithMaven.Student"/>
+		<mapping class="com.hibernate.HibernateWithMaven.Address"/>
 	</session-factory>
 </hibernate-configuration>
