@@ -60,6 +60,6 @@ public class App
         session.save(address);
         tx.commit();
         session.close();
-        
+        factory.close();
     }
 }
