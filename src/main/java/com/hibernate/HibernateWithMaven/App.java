@@ -56,7 +56,7 @@ public class App
         //Transaction by Hibernate
         Session session = factory.openSession();	
         Transaction tx = session.beginTransaction();
-        session.save(st);
+        //session.save(st);
         session.save(address);
         tx.commit();
         session.close();
