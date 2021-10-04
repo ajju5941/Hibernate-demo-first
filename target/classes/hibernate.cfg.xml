@@ -14,8 +14,11 @@
 		<!-- <mapping class="com.hibernate.HibernateWithMaven.Student" /> -->
 		<!-- <mapping class="com.hibernate.HibernateWithMaven.Address"/> -->
 
-		<mapping class="com.hibernate.mapping.Questions" />
-		<mapping class="com.hibernate.mapping.Answer" />
+		<!-- <mapping class="com.hibernate.mapping.Questions" /> -->
+		<!-- <mapping class="com.hibernate.mapping.Answer" /> -->
+		
+		<mapping class="com.hibernate.mapping.Emp" />
+		<mapping class="com.hibernate.mapping.Project" />
 
 	</session-factory>
 </hibernate-configuration>
