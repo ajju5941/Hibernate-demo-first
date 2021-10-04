@@ -10,6 +10,8 @@ import org.hibernate.cfg.Configuration;
 
 public class MappingDemo {
 
+	private static Session session;
+
 	public static void main(String[] args) {
 		
 		Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
@@ -42,7 +44,7 @@ public class MappingDemo {
 		q1.setAnswer(list);
 		
 		
-		Session session = factory.openSession();
+		session = factory.openSession();
 		Transaction tx = session.beginTransaction();
 		
 		session.save(q1);
@@ -51,6 +53,17 @@ public class MappingDemo {
 		session.save(ans3);
 		
 		tx.commit();
+		
+		Questions q = session.get(Questions.class, 101);
+		
+		System.out.println(q.getQuestion());
+		
+		for(Answer ans : q.getAnswer()) {
+			System.out.println(ans.getAnswer());
+			
+		}
+		
+		
 		session.close();
 		factory.close();
 		
