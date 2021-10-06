@@ -9,7 +9,7 @@ public class Project {
 	@Id
 	private int project_id;
 	private String projectName;
-	@ManyToMany(mappedBy = "project")
+	@ManyToMany(mappedBy = "project", fetch = FetchType.EAGER)
 	private List<Emp> emp;
 
 	public Project(int project_id, String projectName, List<Emp> emp) {
