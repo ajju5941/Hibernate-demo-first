@@ -29,12 +29,23 @@ public class HQLExample {
 		}
 		
 		Transaction tx = s.beginTransaction();
-		String query2 = "delete from Student where course=:c";
+		//Delete Transaction
+//		String query2 = "delete from Student where course=:c";
+//		Query q2 = s.createQuery(query2);
+//		q2.setParameter("c", "abc");
+//		
+//		int i = q2.executeUpdate();
+//		System.out.println(i+" Rows deleted");
+		
+		//Update Transaction
+		String query2 = "update from Student set duration=:d where course=:c";
 		Query q2 = s.createQuery(query2);
-		q2.setParameter("c", "abc");
+		q2.setParameter("d", "1.5 Months");
+		q2.setParameter("c", "Hibernate");
 		
 		int i = q2.executeUpdate();
-		System.out.println(i+" Rows deleted");
+		System.out.println(i+" Rows updated");
+		
 		tx.commit();
 		s.close();
 		factory.close();
