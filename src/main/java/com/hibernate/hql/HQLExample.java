@@ -51,11 +51,27 @@ public class HQLExample {
 //		int i = q2.executeUpdate();
 //		System.out.println(i+" Rows updated");
 	
-		Query q3 = s.createQuery("select q.question_id, q.question, a.answer from Questions q inner join q.answer as a ");
-		List<Object[]> list2 = q3.getResultList();
+//		Query q3 = s.createQuery("select q.question_id, q.question, a.answer from Questions q inner join q.answer as a ");
+//		List<Object[]> list2 = q3.getResultList();
+//		
+//		for(Object[] arr:list2) {
+//			System.out.println(Arrays.toString(arr));
+//		}
 		
-		for(Object[] arr:list2) {
-			System.out.println(Arrays.toString(arr));
+		
+		//Pegination
+		String query = "from Student";
+		Query q = s.createQuery(query);
+		
+		q.setFirstResult(10);//Starting point
+		
+		q.setMaxResults(50);// here 50 indicates home rows you want
+
+		List<Student> list = q.list();
+		
+		for(Student student:list)
+		{
+			System.out.println(student.getName()+" : "+student.getCerti().getCourse());
 		}
 		
 		tx.commit();
