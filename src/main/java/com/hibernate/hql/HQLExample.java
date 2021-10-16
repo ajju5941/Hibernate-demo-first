@@ -3,8 +3,6 @@ package com.hibernate.hql;
 import java.util.List;
 
 import org.hibernate.*;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import com.hibernate.HibernateWithMaven.Student;
@@ -29,6 +27,19 @@ public class HQLExample {
 		{
 			System.out.println(student.getName()+" : "+student.getCerti().getCourse());
 		}
+		
+		Transaction tx = s.beginTransaction();
+		String query2 = "delete from Student where course=:c";
+		Query q2 = s.createQuery(query2);
+		q2.setParameter("c", "abc");
+		
+		int i = q2.executeUpdate();
+		System.out.println(i+" Rows deleted");
+		tx.commit();
+		s.close();
+		factory.close();
+		
+		
 	}
 	
 }
