@@ -60,18 +60,29 @@ public class HQLExample {
 		
 		
 		//Pegination
-		String query = "from Student";
-		Query q = s.createQuery(query);
+//		String query = "from Student";
+//		Query q = s.createQuery(query);
+//		
+//		q.setFirstResult(10);//Starting point
+//		
+//		q.setMaxResults(50);// here 50 indicates home rows you want
+//
+//		List<Student> list = q.list();
+//		
+//		for(Student student:list)
+//		{
+//			System.out.println(student.getName()+" : "+student.getCerti().getCourse());
+//		}
 		
-		q.setFirstResult(10);//Starting point
+		//SQL Query Example
+		String query = "select * from Student";
+		Query q = s.createSQLQuery(query);
 		
-		q.setMaxResults(50);// here 50 indicates home rows you want
-
-		List<Student> list = q.list();
+		List<Object[]> list = q.list();
 		
-		for(Student student:list)
+		for(Object[] student:list)
 		{
-			System.out.println(student.getName()+" : "+student.getCerti().getCourse());
+			System.out.println(student[4]+" : "+student[1]);
 		}
 		
 		tx.commit();
