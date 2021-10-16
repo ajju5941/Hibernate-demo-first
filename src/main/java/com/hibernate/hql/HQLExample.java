@@ -18,8 +18,10 @@ public class HQLExample {
 		
 		Session s = factory.openSession();
 		
-		String query = "from Student where course='Java'";
+		String query = "from Student where course=:x";
 		Query q = s.createQuery(query);
+		
+		q.setParameter("x", "Python");
 
 		List<Student> list = q.list();
 		
