@@ -14,6 +14,9 @@ import com.hibernate.HibernateWithMaven.Student;
 
 public class HQLExample {
 	
+	/**
+	 * @param args
+	 */
 	public static void main(String[] args) {
 	
 		Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
