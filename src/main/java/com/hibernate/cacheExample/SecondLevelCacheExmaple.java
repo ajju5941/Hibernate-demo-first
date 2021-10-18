@@ -6,29 +6,31 @@ import org.hibernate.cfg.Configuration;
 
 import com.hibernate.HibernateWithMaven.Student;
 
-public class CacheExample {
+public class SecondLevelCacheExmaple {
 
+	/**
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		
+		//Second Level Cache Started)
 		SessionFactory factory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
-		Session session = factory.openSession(); //session caching started here (First Level Cache Started)
+		Session session = factory.openSession(); 
 		
 		Student student = session.get(Student.class, 1);
 		System.out.println(student);
 		
-		System.out.println("Working on Somthing");
+		session.close();
 		
-		Student student2 = session.get(Student.class, 1);
+		Session session1 = factory.openSession();
 		
-		System.out.println(student2);
+		Student student1 = session1.get(Student.class, 1);
+		System.out.println(student1);
 		
-		System.out.println(session.contains(student2));
-		
-		session.close(); //session caching ended here (First Level Cache Ended)
-		
-		System.out.println(factory.openSession().contains(student2));
+		session1.close();
 		
 		factory.close();
+		
 		
 	}
 
